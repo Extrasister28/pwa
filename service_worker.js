@@ -1,7 +1,7 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'pwa-caches';
 var urlsToCache = [
-    '/poster-keisuke.github.io/',
+    '/extrasister28.github.io/pwa/',
 ];
 
 // インストール処理
