@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-　　<!-- vue.js　-->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="manifest" href="manifest.json">
     <title>PWA Sample</title>
   </head>
@@ -21,19 +19,7 @@
     }).catch(function(err) {
         console.log('ServiceWorker registration failed: ', err);
     });
-    }
-    // vue.jsの設定関係
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      },
-      methods: {
-        reverseMessage: function () {
-          this.message = this.message.split('').reverse().join('')
-        }
-      }
-    });
+    };
     </script>
   </body>
 </html>
