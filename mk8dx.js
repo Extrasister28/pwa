@@ -1,5 +1,5 @@
 function botanClick(){
-    var img = document.getElementById(“image_file”);
+    var img = document.getElementById("image_file");
 
 img.src = “./image/mariokartcourse/1.png”;
 }
