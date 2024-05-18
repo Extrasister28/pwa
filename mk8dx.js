@@ -1,7 +1,7 @@
 function botanClick(){
     var img = document.getElementById("image_file");
 
-img.src = “./image/mariokartcourse/1.png”;
+img.src = “./image/mariokartcourse/1.jpg”;
 }
 
 let button = document.getElementById('randbtn');
