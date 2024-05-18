@@ -1,7 +1,8 @@
-// キャッシュファイルの指定
-var CACHE_NAME = 'pwa-caches';
+var CACHE_NAME = 'color-name';
 var urlsToCache = [
-    '/extrasister28.github.io/pwa/',
+    '/color-name/js/main.js',
+    '/color-name/css/normalize.css',
+    '/color-name/css/common.css'
 ];
 
 // インストール処理
@@ -21,7 +22,7 @@ self.addEventListener('fetch', function(event) {
         caches
             .match(event.request)
             .then(function(response) {
-                return response ? response : fetch(event.request);
+                return response || fetch(event.request);
             })
     );
 });
