@@ -15,7 +15,7 @@ p {
   text-align: center;/*中身を中央寄せ*/
   font-size: 25px;/*文字のサイズ*/
   line-height: 50px;/*高さと合わせる*/
-  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
+  background: linear-gradient(135deg, #ff0000 0%, #00ff80 70%) no-repeat;/*グラデーション①*/
   overflow: hidden;/*はみ出た部分を隠す*/
   text-decoration:none;/*下線は消す*/
 }
