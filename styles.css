@@ -28,7 +28,7 @@ p {
   left: 0;
   width: 100%;/*全体を覆う*/
   height: 100%;/*全体を覆う*/
-  background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+  background: linear-gradient(15deg, #ff00ff, rgb(255, 0, 255) 25%, rgba(255, 0, 0, 0) 50%) no-repeat;
 }
 
 .btn-instahu .fa-instahu {
