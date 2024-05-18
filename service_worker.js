@@ -1,8 +1,6 @@
-var CACHE_NAME = 'color-name';
+var CACHE_NAME = 'extra';
 var urlsToCache = [
-    '/color-name/js/main.js',
-    '/color-name/css/normalize.css',
-    '/color-name/css/common.css'
+    'styles.css'
 ];
 
 // インストール処理
