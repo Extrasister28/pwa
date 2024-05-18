@@ -28,26 +28,22 @@ p {
   left: 0;
   width: 100%;/*全体を覆う*/
   height: 100%;/*全体を覆う*/
+  text-align:center;
   background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
-}
-
-.btn-instahu .fa-instahu {
-  /*アイコン*/
-  font-size: 35px;/*アイコンサイズ*/
-  position: relative;
-  top: 4px;/*アイコン位置の微調整*/
 }
 
 .btn-instahu span {
   /*テキスト*/
   display:inline-block;
   position: relative;
+  text-align:center;
   transition: .5s}
 
 .btn-instahu:hover span {
   /*ホバーで一周回転*/
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
+  text-align:center;
 }
 
 .steribon {
@@ -61,6 +57,7 @@ p {
   background: #78d0f5;/*背景色*/
   color: #FFF;/*文字色*/
   box-sizing: border-box;
+  text-align:center;
 }
 
 .steribon h1 {
@@ -69,6 +66,7 @@ p {
   border-top: dashed 1px #FFF;/*上の破線*/
   border-bottom: dashed 1px #FFF;/*下の破線*/
   line-height: 46px;
+  text-align:center;
 }
 
 .steribon:before, .steribon:after {
@@ -77,6 +75,7 @@ p {
   width: 0px;
   height: 0px;
   z-index: 1;
+  text-align:center;
 }
 
 .steribon:before {
@@ -86,6 +85,7 @@ p {
   border-width: 30px 0px 30px 15px;
   border-color: transparent transparent transparent #fff;
   border-style: solid;
+  text-align:center;
 }
 
 .steribon:after {
@@ -95,4 +95,5 @@ p {
   border-width: 30px 15px 30px 0px;
   border-color: transparent #fff transparent transparent;
   border-style: solid;
+  text-align:center;
 }
