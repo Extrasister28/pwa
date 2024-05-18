@@ -1,6 +1,6 @@
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
-    const images = ['./image/mariokartcourse/1', './image/mariokartcourse/2', './image/mariokartcourse/3','./image/mariokartcourse/4'];
+    const images = ['./image/mariokartcourse/1.jpg', './image/mariokartcourse/2.jpg', './image/mariokartcourse/3.jpg','./image/mariokartcourse/4.jpg'];
     const imageNo = Math.floor( Math.random() * images.length)
     randimageArea.src = images[imageNo];
 }
