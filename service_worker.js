@@ -1,3 +1,4 @@
+// キャッシュ名、どこまでキャッシュするか。
 var CACHE_NAME = 'extra';
 var urlsToCache = [
     'styles.css'
