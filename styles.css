@@ -3,12 +3,12 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background: #ffffff url('../image/mk8dxbackground.jpg') repeat;
+    background: #ffffff url('./image/mk8dxbackground.jpg') repeat;
     background-image: -webkit-image-set(
-        url("../image/mk8dxbackground.avif"),
-        url("../image/mk8dxbackground.jpg"));
+        url("./image/mk8dxbackground.avif"),
+        url("./image/mk8dxbackground.jpg"));
     background-image: image-set(
-    "../image/mk8dxbackground.avif" type("image/avif"),
-    "../image/mk8dxbackground.jpg" type("image/jpeg")
+    "./image/mk8dxbackground.avif" type("image/avif"),
+    "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
 }
