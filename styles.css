@@ -12,3 +12,7 @@ body {
     "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
 }
+
+h1 {
+    text-align:center;
+}
