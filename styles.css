@@ -12,3 +12,8 @@ body {
     "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
 }
+
+.textcenter{
+      width:500px;
+      margin: 0 auto;
+    }
