@@ -1,3 +1,5 @@
 /* My StyleSheet */
-
-background-image: url("./image/mk8dxbackground");
+.container {
+　　　 height: 1280px; 
+　　　 background-image: url(./image/mk8dxbackground.avif);
+}
