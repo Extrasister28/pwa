@@ -16,3 +16,25 @@ body {
 h1 {
     text-align:center;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 横に8個の列 */
+    gap: 10px; /* 要素間の隙間 */
+    padding: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item img {
+    width: 100px; /* 画像の幅を適宜設定 */
+    height: auto; /* 画像の高さを自動調整 */
+}
+
+.item button {
+    margin-top: 5px; /* 画像とボタンの間の隙間 */
+}
