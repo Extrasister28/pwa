@@ -17,7 +17,7 @@
     ],
     "screenshots" : [
   {
-    "src": "screenshot.png",
+    "src": "./image/screenshot.png",
     "sizes": "1920x1080",
     "type": "image/png",
     "platform": "wide",
