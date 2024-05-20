@@ -29,10 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (button.textContent === "ON") {
                 button.textContent = "OFF";
                 // 条件リストから要素を削除
-                const index = conditionList.indexOf(id);
-                if (index > -1) {
-                    conditionList.splice(index, 1);
-                }
+                conditionList = conditionList.filter(item => item !== id);
             } else {
                 button.textContent = "ON";
                 // 条件リストに要素を追加
@@ -43,4 +40,3 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("現在の条件リスト:", conditionList);
         });
     });
-});
