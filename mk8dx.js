@@ -87,4 +87,3 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(`カップ${cupId}に対応するコースを全て切り替えました。`);
         });
     });
-});
