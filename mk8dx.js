@@ -1,5 +1,5 @@
-/*function botanClick(){
-    const imageArea = document.getElementById('randimageArea');
+function botanClick(){
+    /*const imageArea = document.getElementById('randimageArea');
     const images = ['./image/mariokartcourse/1.jpg',
     './image/mariokartcourse/2.jpg',
     './image/mariokartcourse/3.jpg',
