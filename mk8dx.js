@@ -1,5 +1,5 @@
 // 条件リストの配列を初期化
-const conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
+let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
 
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
@@ -40,3 +40,4 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("現在の条件リスト:", conditionList);
         });
     });
+});
