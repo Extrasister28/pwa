@@ -1,9 +1,9 @@
 // 条件リストの配列を初期化
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
-
-document.getElementById('cupToggleBtn').addEventListener('click', function () {
+// カップのON/OFFボタンのクリックイベント
+    const cupButton = document.getElementById('cupToggleBtn');
+    cupButton.addEventListener('click', function () {
         const buttons = document.querySelectorAll(".toggle-button");
-        const cupButton = document.getElementById('cupToggleBtn');
         if (cupButton.textContent === "カップのコースON/OFF") {
             conditionList = [];
             buttons.forEach(button => {
