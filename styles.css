@@ -17,14 +17,10 @@ h1 {
     text-align:center;
 }
 
-body {
-    font-family: Arial, sans-serif;
-}
-
 .container {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 横に8個の列 */
-    gap: 10px; /* 要素間の隙間 */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
     padding: 20px;
 }
 
@@ -35,10 +31,22 @@ body {
 }
 
 .item img {
-    width: 100px; /* 画像の幅を適宜設定 */
-    height: auto; /* 画像の高さを自動調整 */
+    width: 100%;
+    height: auto;
+    max-width: 100px;
 }
 
 .item button {
-    margin-top: 5px; /* 画像とボタンの間の隙間 */
+    margin-top: 5px;
+}
+
+.random-display {
+    text-align: center;
+    margin: 20px;
+}
+
+#randimageArea {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
 }
