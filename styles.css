@@ -16,3 +16,13 @@ body {
 h1 {
     text-align:center;
 }
+
+.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
