@@ -1,4 +1,4 @@
-function botanClick(){
+/*function botanClick(){
     const imageArea = document.getElementById('randimageArea');
     const images = ['./image/mariokartcourse/1.jpg',
     './image/mariokartcourse/2.jpg',
@@ -97,7 +97,16 @@ function botanClick(){
     './image/mariokartcourse/95.jpg',
     './image/mariokartcourse/96.jpg'];
     const imageNo = Math.floor( Math.random() * images.length)
-    randimageArea.src = images[imageNo];
+    randimageArea.src = images[imageNo];*/
+
+    const imageArea = document.getElementById('randimageArea');
+        if (conditionList.length === 0) {
+            alert("表示できる画像がありません。");
+            return;
+        }
+        const randomIndex = Math.floor(Math.random() * conditionList.length);
+        const imageId = conditionList[randomIndex];
+        imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
 }
 
 let button = document.getElementById('randbtn');
@@ -106,18 +115,31 @@ let button = document.getElementById('randbtn');
 button.addEventListener('click', botanClick);
 
 document.addEventListener("DOMContentLoaded", function() {
+    // 条件リストの配列を初期化
+    const conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
+
     // 全てのボタンを取得
     const buttons = document.querySelectorAll(".toggle-button");
-    
+
     // 各ボタンにクリックイベントリスナーを追加
     buttons.forEach(button => {
         button.addEventListener("click", function() {
             // ボタンのテキストを切り替え
+            const id = parseInt(button.dataset.id, 10);
             if (button.textContent === "ON") {
                 button.textContent = "OFF";
+                // 条件リストから要素を削除
+                const index = conditionList.indexOf(id);
+                if (index > -1) {
+                    conditionList.splice(index, 1);
+                }
             } else {
                 button.textContent = "ON";
+                // 条件リストに要素を追加
+                if (!conditionList.includes(id)) {
+                    conditionList.push(id);
+                }
             }
+            console.log("現在の条件リスト:", conditionList);
         });
     });
-});
