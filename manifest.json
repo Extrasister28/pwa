@@ -15,4 +15,13 @@
             "type": "image/jpg"
         }
     ]
+    "screenshots" : [
+  {
+    "src": "screenshot1.png",
+    "sizes": "1920x1080",
+    "type": "image/png",
+    "platform": "wide",
+    "label": "Homescreen of Awesome App"
+  }
+]
 }
