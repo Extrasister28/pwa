@@ -4,7 +4,7 @@ let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
     if (conditionList.length === 0) {
-        alert("表示できる画像がありません。");
+        alert("１つ以上の条件を指定してください。");
         return;
     }
     const randomIndex = Math.floor(Math.random() * conditionList.length);
