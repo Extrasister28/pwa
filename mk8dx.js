@@ -63,3 +63,28 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("全てのボタンをOFFにしました。");
     });
 });
+
+// カップ全てON/OFFボタンにクリックイベントを追加
+    const cupButtons = document.querySelectorAll('.cup-button');
+    cupButtons.forEach(cupButton => {
+        cupButton.addEventListener('click', function() {
+            const cupId = parseInt(cupButton.dataset.cupId, 10);
+            const startCourseId = (cupId - 1) * 4 + 1;
+            const endCourseId = cupId * 4;
+
+            for (let id = startCourseId; id <= endCourseId; id++) {
+                const courseButton = document.querySelector(`.toggle-button[data-id='${id}']`);
+                if (courseButton.textContent === "ON") {
+                    courseButton.textContent = "OFF";
+                    conditionList = conditionList.filter(item => item !== id);
+                } else {
+                    courseButton.textContent = "ON";
+                    if (!conditionList.includes(id)) {
+                        conditionList.push(id);
+                    }
+                }
+            }
+            console.log(`カップ${cupId}に対応するコースを全て切り替えました。`);
+        });
+    });
+});
