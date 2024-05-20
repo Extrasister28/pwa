@@ -104,3 +104,20 @@ let button = document.getElementById('randbtn');
 
 // addEventListener( 'イベント', 処理)で要素にイベントが発火した際に処理を実行する
 button.addEventListener('click', botanClick);
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 全てのボタンを取得
+    const buttons = document.querySelectorAll(".toggle-button");
+    
+    // 各ボタンにクリックイベントリスナーを追加
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            // ボタンのテキストを切り替え
+            if (button.textContent === "ON") {
+                button.textContent = "OFF";
+            } else {
+                button.textContent = "ON";
+            }
+        });
+    });
+});
