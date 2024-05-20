@@ -1,23 +1,5 @@
 // 条件リストの配列を初期化
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
-// カップのON/OFFボタンのクリックイベント
-    const cupButton = document.getElementById('cupToggleBtn');
-    cupButton.addEventListener('click', function () {
-        const buttons = document.querySelectorAll(".toggle-button");
-        if (cupButton.textContent === "カップのコースON/OFF") {
-            conditionList = [];
-            buttons.forEach(button => {
-                button.textContent = "OFF";
-            });
-            cupButton.textContent = "カップ全てON";
-        } else {
-            conditionList = Array.from({length: 96}, (_, i) => i + 1);
-            buttons.forEach(button => {
-                button.textContent = "ON";
-            });
-            cupButton.textContent = "カップ全てOFF";
-        }
-    });
 
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
