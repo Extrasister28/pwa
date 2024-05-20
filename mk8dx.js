@@ -40,4 +40,26 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("現在の条件リスト:", conditionList);
         });
     });
+
+    // すべてONボタンにクリックイベントを追加
+    document.getElementById('allOnBtn').addEventListener('click', function() {
+        buttons.forEach(button => {
+            button.textContent = "ON";
+            const id = parseInt(button.dataset.id, 10);
+            if (!conditionList.includes(id)) {
+                conditionList.push(id);
+            }
+        });
+        console.log("全てのボタンをONにしました。");
+    });
+
+    // すべてOFFボタンにクリックイベントを追加
+    document.getElementById('allOffBtn').addEventListener('click', function() {
+        buttons.forEach(button => {
+            button.textContent = "OFF";
+            const id = parseInt(button.dataset.id, 10);
+            conditionList = conditionList.filter(item => item !== id);
+        });
+        console.log("全てのボタンをOFFにしました。");
+    });
 });
