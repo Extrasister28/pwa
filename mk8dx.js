@@ -9,7 +9,7 @@ function botanClick(){
     }
     const randomIndex = Math.floor(Math.random() * conditionList.length);
     const imageId = conditionList[randomIndex];
-    imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
+    //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
     document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
 }
 
