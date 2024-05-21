@@ -12,13 +12,11 @@ function botanClick(){
         const imageId = conditionList[randomIndex];
         //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
         document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
-        for(var i=1; i <= 10; i += 1){
-            (function(i){ //追加
-                setTimeout(function() {
-                    console.log(i);
-                }, i*100);
-            })(i); //追加
-        }
+        (function(i){
+            setTimeout(function() {
+                console.log(i);
+            }, i*100);
+        })(i);
     }
 }
 
