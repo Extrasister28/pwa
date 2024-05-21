@@ -18,11 +18,10 @@ h1 {
 }
 
 .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 20px;
-}
-
-.cup-container {
-    margin-bottom: 20px;
 }
 
 .cup, .item {
