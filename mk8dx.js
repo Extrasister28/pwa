@@ -1,5 +1,4 @@
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
-let i = 0;
 
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
@@ -7,7 +6,7 @@ function botanClick(){
         alert("１つ以上の条件を指定してください。");
         return;
     }
-    for (i = 0; i <= 30; i++) {
+    for (let i = 0; i <= 30; i++) {
         (function(i){
             setTimeout(function() {
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
