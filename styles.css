@@ -8,8 +8,8 @@ body {
         url("./image/mk8dxbackground.avif"),
         url("./image/mk8dxbackground.jpg"));
     background-image: image-set(
-        "./image/mk8dxbackground.avif" type("image/avif"),
-        "./image/mk8dxbackground.jpg" type("image/jpeg")
+    "./image/mk8dxbackground.avif" type("image/avif"),
+    "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
 }
 
@@ -20,26 +20,14 @@ h1 {
 .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-
-.cup-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 10px;
-    flex: 1;
+    padding: 20px;
 }
 
 .cup, .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.item {
-    width: 100%;
 }
 
 .item img, .cup img {
