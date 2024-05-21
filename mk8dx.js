@@ -78,7 +78,7 @@ function RandPromise(num) {
 
 async function RandAsync() {
 
-    const result = await RandPromise(1);
+    const result = await RandPromise(10);
 
     console.log(result);
 
