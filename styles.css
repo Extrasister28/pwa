@@ -29,12 +29,17 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    flex: 1;
 }
 
 .cup, .item {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.item {
+    width: 100%;
 }
 
 .item img, .cup img {
