@@ -22,7 +22,6 @@ function botanClick(){
             }, i*100);
         })(i);
     }
-    i = 0;
 }
 
 let button = document.getElementById('randbtn');
