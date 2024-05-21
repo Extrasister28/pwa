@@ -8,13 +8,12 @@ function botanClick(){
         return;
     }
     for (let i = 0; i <= 10; i++) {
-        const randomIndex = Math.floor(Math.random() * conditionList.length);
-        console.log(i * 10);
-        const imageId = conditionList[randomIndex];
-        //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
-        document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
         (function(i){
             setTimeout(function() {
+                const randomIndex = Math.floor(Math.random() * conditionList.length);
+                const imageId = conditionList[randomIndex];
+                //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
+                document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
                 console.log(i);
             }, i*100);
         })(i);
