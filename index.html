@@ -31,22 +31,25 @@
                 // 1, 5, 9, 13,...の位置にカップ画像を表示
                 if ((i - 1) % 4 === 0) {
                     cupCounter++;
+                    // カップごとのコンテナを追加
                     courseContainer.innerHTML += `
-                        <div class="cup">
-                            <img src="./image/mariokartcup/${cupCounter}.jpg" alt="カップ画像">
+                        <div class="cup-container">
+                            <div class="cup">
+                                <img src="./image/mariokartcup/${cupCounter}.jpg" alt="カップ画像">
+                            </div>
+                            <div class="courses" id="cup-${cupCounter}">
+                            </div>
                         </div>
                     `;
                 }
-                courseContainer.innerHTML += `
+                // カップに属するコースを追加
+                const currentCup = document.getElementById(`cup-${cupCounter}`);
+                currentCup.innerHTML += `
                     <div class="item">
                         <img src="./image/mariokartcourse/${i}.jpg" alt="画像${i}">
                         <button class="toggle-button" data-id="${i}">ON</button>
                     </div>
                 `;
-                // 各カップごとに改行を挿入
-                if (i % 4 === 0) {
-                    courseContainer.innerHTML += `<br>`;
-                }
             }
         });
     </script>
