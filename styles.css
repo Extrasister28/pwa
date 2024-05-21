@@ -8,8 +8,8 @@ body {
         url("./image/mk8dxbackground.avif"),
         url("./image/mk8dxbackground.jpg"));
     background-image: image-set(
-    "./image/mk8dxbackground.avif" type("image/avif"),
-    "./image/mk8dxbackground.jpg" type("image/jpeg")
+        "./image/mk8dxbackground.avif" type("image/avif"),
+        "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
 }
 
@@ -18,10 +18,14 @@ h1 {
 }
 
 .container {
+    padding: 20px;
+}
+
+.cup-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .cup, .item {
