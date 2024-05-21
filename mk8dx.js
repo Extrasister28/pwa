@@ -27,7 +27,6 @@ let button = document.getElementById('randbtn');
 button.addEventListener('click', botanClick);
 
 document.addEventListener("DOMContentLoaded", function() {
-    if (i = 0){
     // 全てのボタンを取得
     const buttons = document.querySelectorAll(".toggle-button");
 
@@ -72,5 +71,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         console.log("全てのボタンをOFFにしました。");
     });
-    }
 });
