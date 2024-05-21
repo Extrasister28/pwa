@@ -11,8 +11,7 @@ function botanClick(){
             setTimeout(function() {
                 if (conditionList.length === 0) {
                     alert("選択コースの変更が検出されたので、処理を停止します。");
-                    i = 31;
-                    return;
+                    return false;
                 }
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
                 const imageId = conditionList[randomIndex];
