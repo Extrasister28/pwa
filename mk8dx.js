@@ -1,4 +1,3 @@
-// 条件リストの配列を初期化
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
 
 function botanClick(){
