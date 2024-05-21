@@ -10,6 +10,7 @@ function botanClick(){
     const randomIndex = Math.floor(Math.random() * conditionList.length);
     const imageId = conditionList[randomIndex];
     imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
+    document.getElementById('randcourse').innerHTML = `<img src="${imageId}.jpg" alt="Course">`;
 }
 
 let button = document.getElementById('randbtn');
