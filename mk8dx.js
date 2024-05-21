@@ -8,10 +8,11 @@ function botanClick(){
         return;
     }
     for (let i = 0; i <= 10; i++) {
-    const randomIndex = Math.floor(Math.random() * conditionList.length);
-    const imageId = conditionList[randomIndex];
-    //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
-    document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
+        const randomIndex = Math.floor(Math.random() * conditionList.length);
+        const imageId = conditionList[randomIndex];
+        //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
+        document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
+        RandAsync();
     }
 }
 
@@ -66,3 +67,11 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("全てのボタンをOFFにしました。");
     });
 });
+
+async function RandAsync() {
+
+    const result = await myPromise(1);
+
+    console.log(result);
+
+}
