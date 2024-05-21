@@ -1,5 +1,4 @@
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
-let stp;
 
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
@@ -9,11 +8,10 @@ function botanClick(){
     }
     for (let i = 0; i <= 30; i++) {
         (function(i){
-            stp = setTimeout(function() {
+            setTimeout(function() {
                 if (conditionList.length === 0) {
                     alert("選択コースの変更が検出されたので、処理を停止します。");
                     i = 31;
-                    clearTimeout(stp);
                     return;
                 }
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
