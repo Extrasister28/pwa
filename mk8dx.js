@@ -1,4 +1,5 @@
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
+let i = 0;
 
 function botanClick(){
     const imageArea = document.getElementById('randimageArea');
@@ -6,7 +7,7 @@ function botanClick(){
         alert("１つ以上の条件を指定してください。");
         return;
     }
-    for (let i = 0; i <= 30; i++) {
+    for (i = 0; i <= 30; i++) {
         (function(i){
             setTimeout(function() {
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
@@ -17,6 +18,7 @@ function botanClick(){
             }, i*100);
         })(i);
     }
+    i = 0;
 }
 
 let button = document.getElementById('randbtn');
@@ -25,6 +27,7 @@ let button = document.getElementById('randbtn');
 button.addEventListener('click', botanClick);
 
 document.addEventListener("DOMContentLoaded", function() {
+    if (i = 0){
     // 全てのボタンを取得
     const buttons = document.querySelectorAll(".toggle-button");
 
@@ -69,4 +72,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         console.log("全てのボタンをOFFにしました。");
     });
+    }
 });
