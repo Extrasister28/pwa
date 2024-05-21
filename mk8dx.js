@@ -8,7 +8,7 @@ function botanClick(){
     }
     document.getElementById('audiosaisei').currentTime = 0; //連続クリックに対応
     document.getElementById('audiosaisei').play(); //クリックしたら音を再生
-    for (let i = 0; i <= 20; i++) {
+    for (let i = 0; i <= 27; i++) {
         (function(i){
             setTimeout(function() {
                 if (conditionList.length === 0) {
