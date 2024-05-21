@@ -30,9 +30,6 @@
             for (let i = 1; i <= 96; i++) {
                 if ((i - 1) % 4 === 0) {
                     cupCounter++;
-                    if (i !== 1) {
-                        courseContainer.innerHTML += `</div>`;
-                    }
                     courseContainer.innerHTML += `
                         <div class="cup-container">
                             <div class="cup">
@@ -46,8 +43,10 @@
                         <button class="toggle-button" data-id="${i}">ON</button>
                     </div>
                 `;
+                if (i % 4 === 0) {
+                    courseContainer.innerHTML += `</div>`;
+                }
             }
-            courseContainer.innerHTML += `</div>`;
         });
     </script>
     <script>
