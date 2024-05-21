@@ -30,8 +30,11 @@
             for (let i = 1; i <= 96; i++) {
                 if ((i - 1) % 4 === 0) {
                     cupCounter++;
+                    if (i !== 1) {
+                        courseContainer.innerHTML += `</div>`; // 前のカップグループを閉じる
+                    }
                     courseContainer.innerHTML += `
-                        <div class="cup-container">
+                        <div class="cup-group">
                             <div class="cup">
                                 <img src="./image/mariokartcup/${cupCounter}.jpg" alt="カップ画像">
                             </div>
@@ -43,10 +46,8 @@
                         <button class="toggle-button" data-id="${i}">ON</button>
                     </div>
                 `;
-                if (i % 4 === 0) {
-                    courseContainer.innerHTML += `</div>`;
-                }
             }
+            courseContainer.innerHTML += `</div>`; // 最後のカップグループを閉じる
         });
     </script>
     <script>
