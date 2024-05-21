@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function RandPromise(num) {
   return new Promise(function(resolve) {
 
-    setTimeout(function() { resolve(num * num) }, 200)
+    setTimeout(function() { resolve(num * num) }, 1000)
 
   })
 }
