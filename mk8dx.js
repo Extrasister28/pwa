@@ -1,7 +1,7 @@
 let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
-let stp = false;
 
 function botanClick(){
+    let timeouttime = 100;
     const imageArea = document.getElementById('randimageArea');
     if (conditionList.length === 0) {
         alert("１つ以上の条件を指定してください。");
@@ -11,20 +11,16 @@ function botanClick(){
         (function(i){
             setTimeout(function() {
                 if (conditionList.length === 0) {
+                    timeouttime = 0;
                     return;
-                    stp = true;
                 }
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
                 const imageId = conditionList[randomIndex];
                 //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
                 document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
                 console.log(i);
-            }, i*100);
+            }, i*timeouttime);
         })(i);
-    }
-    if(stp === true) {
-        alert("選択コースが変更されたので処理を中断しました。");
-        stp = false;
     }
 }
 
