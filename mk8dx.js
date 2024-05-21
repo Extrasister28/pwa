@@ -7,10 +7,12 @@ function botanClick(){
         alert("１つ以上の条件を指定してください。");
         return;
     }
+    for (let i = 0; i <= 10; i++) {
     const randomIndex = Math.floor(Math.random() * conditionList.length);
     const imageId = conditionList[randomIndex];
     //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
     document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
+    }
 }
 
 let button = document.getElementById('randbtn');
