@@ -22,7 +22,7 @@ function botanClick(){
             }, i*100);
         })(i);
     }
-    if(stp = true) {
+    if(stp === true) {
         alert("選択コースが変更されたので処理を中断しました。");
         stp = false;
     }
