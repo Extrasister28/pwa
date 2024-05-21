@@ -24,7 +24,7 @@ h1 {
     padding: 20px;
 }
 
-.cup-container {
+.cup-group {
     display: flex;
     flex-direction: column;
     align-items: center;
