@@ -22,43 +22,45 @@
       <button type="button" id="allOnBtn">すべてON</button>
       <button type="button" id="allOffBtn">すべてOFF</button>
     </div>
-    <div class="container">
-        <script>
-        let cupCounter = 0;
-        for (let i = 1; i <= 96; i++) {
-            // 4つごとに改行
-            //if ((i - 1) % 4 === 0) {
-            //    document.write('<br>');
-            //}
-            // 1, 5, 9, 13,...の位置にカップ画像を表示
-            if ((i - 1) % 4 === 0) {
-                cupCounter++;
-                document.write(`
-                    <div class="item">
-                        <img src="./image/mariokartcup/${cupCounter}.jpg" alt="カップ画像">
-                    </div>
-                `);
-            }
-            document.write(`
-                <div class="item">
-                    <img src="./image/mariokartcourse/${i}.jpg" alt="画像${i}">
-                    <button class="toggle-button" data-id="${i}">ON</button>
-                </div>
-            `);
+    <div class="container" id="course-container"></div>
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('service_worker.js').then(function(registration) {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+          });
         }
     </script>
-    </div>
+    <script type="text/javascript" src="mk8dx.js"></script>
     <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('service_worker.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
-</script>
-<script type="text/javascript" src="mk8dx.js"></script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const courseContainer = document.getElementById("course-container");
+            let cupCounter = 0;
+            for (let i = 1; i <= 96; i++) {
+                // 1, 5, 9, 13,...の位置にカップ画像を表示
+                if ((i - 1) % 4 === 0) {
+                    cupCounter++;
+                    courseContainer.innerHTML += `
+                        <div class="cup">
+                            <img src="./image/mariokartcup/${cupCounter}.jpg" alt="カップ画像">
+                        </div>
+                    `;
+                }
+                courseContainer.innerHTML += `
+                    <div class="item">
+                        <img src="./image/mariokartcourse/${i}.jpg" alt="画像${i}">
+                        <button class="toggle-button" data-id="${i}">ON</button>
+                    </div>
+                `;
+                // 各カップごとに改行を挿入
+                if (i % 4 === 0) {
+                    courseContainer.innerHTML += `<br>`;
+                }
+            }
+        });
+    </script>
   </body>
 </html>
