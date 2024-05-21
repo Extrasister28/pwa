@@ -6,8 +6,8 @@ function botanClick(){
         alert("１つ以上の条件を指定してください。");
         return;
     }
-    document.getElementById('btn_audio').currentTime = 0; //連続クリックに対応
-    document.getElementById('btn_audio').play(); //クリックしたら音を再生
+    document.getElementById('audiosaisei').currentTime = 0; //連続クリックに対応
+    document.getElementById('audiosaisei').play(); //クリックしたら音を再生
     for (let i = 0; i <= 30; i++) {
         (function(i){
             setTimeout(function() {
