@@ -56,7 +56,7 @@ h1 {
     text-align: center;
     margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
 }
-      /* 枠で囲むためのスタイル */
+/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
@@ -80,4 +80,17 @@ h1 {
     margin: 20px auto;
     font-size: 14px;
     overflow: hidden;
+}
+
+/* 抽選開始ボタンとテキストを中央に配置 */
+#randbtn {
+    display: block;
+    margin: 20px auto;
+    padding: 20px; /* ボタンの大きさを2倍にする */
+    font-size: 20px; /* ボタンのテキストを大きくする */
+}
+
+#botantext {
+    text-align: center;
+    font-size: 18px;
 }
