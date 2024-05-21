@@ -68,9 +68,17 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function RandPromise(num) {
+  return new Promise(function(resolve) {
+
+    setTimeout(function() { resolve(num * num) }, 200)
+
+  })
+}
+
 async function RandAsync() {
 
-    const result = await myPromise(1);
+    const result = await RandPromise(1);
 
     console.log(result);
 
