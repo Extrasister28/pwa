@@ -12,7 +12,13 @@ function botanClick(){
         const imageId = conditionList[randomIndex];
         //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
         document.getElementById('randcourse').innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
-        RandAsync();
+        for(var i=1; i <= 10; i += 1){
+            (function(i){ //追加
+                setTimeout(function() {
+                    console.log(i);
+                }, i*100);
+            })(i); //追加
+        }
     }
 }
 
@@ -67,19 +73,3 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("全てのボタンをOFFにしました。");
     });
 });
-
-function RandPromise(num) {
-  return new Promise(function(resolve) {
-
-    setTimeout(function() { resolve(num * num) }, 1000)
-
-  })
-}
-
-async function RandAsync() {
-
-    const result = await RandPromise(10);
-
-    console.log(result);
-
-}
