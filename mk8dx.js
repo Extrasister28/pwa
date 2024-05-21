@@ -9,6 +9,10 @@ function botanClick(){
     for (let i = 0; i <= 30; i++) {
         (function(i){
             setTimeout(function() {
+                if (conditionList.length === 0) {
+                    alert("選択コースの変更が検出されたので、処理を停止します。");
+                    return;
+                }
                 const randomIndex = Math.floor(Math.random() * conditionList.length);
                 const imageId = conditionList[randomIndex];
                 //imageArea.src = `./image/mariokartcourse/${imageId}.jpg`;
