@@ -1,24 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const characters = [
-        {src: './image/mk8dxchara/character1.png', selected: true},
-        {src: './image/mk8dxchara/character2.png', selected: true},
-        {src: './image/mk8dxchara/character3.png', selected: true}
-    ];
-    const karts = [
-        {src: './image/mk8dxkart/kart1.png', selected: true},
-        {src: './image/mk8dxkart/kart2.png', selected: true},
-        {src: './image/mk8dxkart/kart3.png', selected: true}
-    ];
-    const tires = [
-        {src: './image/mk8dxtire/tire1.png', selected: true},
-        {src: './image/mk8dxtire/tire2.png', selected: true},
-        {src: './image/mk8dxtire/tire3.png', selected: true}
-    ];
-    const gliders = [
-        {src: './image/mk8dxglider/glider1.png', selected: true},
-        {src: './image/mk8dxglider/glider2.png', selected: true},
-        {src: './image/mk8dxglider/glider3.png', selected: true}
-    ];
+    // 画像パスを生成する関数
+    function generateImageArray(basePath, count) {
+        const arr = [];
+        for (let i = 1; i <= count; i++) {
+            arr.push({ src: `${basePath}${i}.png`, selected: true });
+        }
+        return arr;
+    }
+
+    // 配列を生成
+    const characters = generateImageArray('./image/mk8dxchara/character', 52);
+    const karts = generateImageArray('./image/mk8dxkart/kart', 41);
+    const tires = generateImageArray('./image/mk8dxtire/tire', 22);
+    const gliders = generateImageArray('./image/mk8dxglider/glider', 15);
 
     function createOptionHTML(item, group) {
         return `
