@@ -39,6 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
         // オプションボタンにイベントリスナーを追加する
+        document.querySelectorAll('.toggle-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const group = this.getAttribute('data-group');
+                const src = this.getAttribute('data-src');
+                const items = { characters, karts, tires, gliders }[group];
+                const item = items.find(item => item.src === src);
+                item.selected = !item.selected;
+                this.textContent = item.selected ? 'ON' : 'OFF';
+            });
+        });
+
+        // 全体のグループのON/OFFボタンにイベントリスナーを追加する
         document.querySelectorAll('.toggle-all-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
