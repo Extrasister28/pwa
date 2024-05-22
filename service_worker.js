@@ -2,6 +2,7 @@
 var CACHE_NAME = 'extra';
 var urlsToCache = [
     'styles.css'
+    'randcustom.css'
 ];
 
 // インストール処理
