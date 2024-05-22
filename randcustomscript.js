@@ -68,5 +68,26 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('glider-image').innerHTML = randomGlider ? `<img src="${randomGlider}" alt="Glider">` : 'No selection';
     });
 
+    document.querySelectorAll('.toggle-all-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const group = this.getAttribute('data-group');
+            const items = {characters, karts, tires, gliders}[group];
+            const allSelected = items.every(item => item.selected);
+            items.forEach(item => item.selected = !allSelected);
+            document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
+                button.textContent = !allSelected ? 'ON' : 'OFF';
+            });
+        });
+    });
+
+    document.getElementById('toggle-all-button').addEventListener('click', function() {
+        const allGroups = [characters, karts, tires, gliders];
+        const allSelected = allGroups.every(group => group.every(item => item.selected));
+        allGroups.forEach(group => group.forEach(item => item.selected = !allSelected));
+        document.querySelectorAll('.toggle-button').forEach(button => {
+            button.textContent = !allSelected ? 'ON' : 'OFF';
+        });
+    });
+
     renderOptions();
 });
