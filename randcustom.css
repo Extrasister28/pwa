@@ -1,3 +1,4 @@
+/* 既存のCSS */
 body {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -7,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 40px; /* ここで画像コンテナの位置を下げる */
 }
 
 .image-box {
@@ -36,7 +38,8 @@ body {
     text-align: center;
     margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
 }
-      /* 枠で囲むためのスタイル */
+
+/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
@@ -46,6 +49,7 @@ body {
     text-decoration: none;
     color: #000;
 }
+
 .link-container a:hover {
     background-color: #f0f0f0; /* ホバー時の背景色 */
 }
