@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 配列を生成
-    const characters = generateImageArray('./image/mk8dxchara/character', 52);
-    const karts = generateImageArray('./image/mk8dxkart/kart', 41);
-    const tires = generateImageArray('./image/mk8dxtire/tire', 22);
-    const gliders = generateImageArray('./image/mk8dxglider/glider', 15);
+    const characters = generateImageArray('./image/mariokartchara/character', 52);
+    const karts = generateImageArray('./image/mariokartmachine/kart', 41);
+    const tires = generateImageArray('./image/mariokarttire/tire', 22);
+    const gliders = generateImageArray('./image/mariokartglider/glider', 15);
 
     function createOptionHTML(item, group) {
         return `
