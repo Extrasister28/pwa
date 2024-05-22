@@ -27,11 +27,17 @@ body {
     max-height: 100%;
 }
 
-#random-button, .toggle-all-button, #toggle-all-button {
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#random-button, #toggle-all-button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
-    display: block;
 }
 
 /* リンクを中央寄せにするためのスタイル */
