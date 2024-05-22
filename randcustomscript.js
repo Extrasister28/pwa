@@ -38,14 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
-        document.querySelectorAll('.toggle-button').forEach(button => {
+        // オプションボタンにイベントリスナーを追加する
+        document.querySelectorAll('.toggle-all-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
-                const src = this.getAttribute('data-src');
-                const items = {characters, karts, tires, gliders}[group];
-                const item = items.find(item => item.src === src);
-                item.selected = !item.selected;
-                this.textContent = item.selected ? 'ON' : 'OFF';
+                const items = { characters, karts, tires, gliders }[group];
+                const allSelected = items.every(item => item.selected);
+                items.forEach(item => item.selected = !allSelected);
+                document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
+                    button.textContent = !allSelected ? 'ON' : 'OFF';
+                });
             });
         });
     }
@@ -66,18 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('kart-image').innerHTML = randomKart ? `<img src="${randomKart}" alt="Kart">` : 'No selection';
         document.getElementById('tire-image').innerHTML = randomTire ? `<img src="${randomTire}" alt="Tire">` : 'No selection';
         document.getElementById('glider-image').innerHTML = randomGlider ? `<img src="${randomGlider}" alt="Glider">` : 'No selection';
-    });
-
-    document.querySelectorAll('.toggle-all-button').forEach(button => {
-        button.addEventListener('click', function() {
-            const group = this.getAttribute('data-group');
-            const items = {characters, karts, tires, gliders}[group];
-            const allSelected = items.every(item => item.selected);
-            items.forEach(item => item.selected = !allSelected);
-            document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
-                button.textContent = !allSelected ? 'ON' : 'OFF';
-            });
-        });
     });
 
     document.getElementById('toggle-all-button').addEventListener('click', function() {
