@@ -64,7 +64,8 @@ body {
 }
 
 .option-group h2 {
-    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 10px; /* タイトルとボタンの間のスペース */
 }
 
 .option-item {
