@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getRandomItem(items) {
+        if (!items) return null;
         const filteredItems = items.filter(item => item.selected);
         if (filteredItems.length === 0) return null;
         return filteredItems[Math.floor(Math.random() * filteredItems.length)].src;
@@ -73,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function startRoulette() {
         const displayTime = 100; // 各画像が表示される時間（ミリ秒）
         const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
-        
+
         const randomCharacter = getRandomItem(characters);
         const randomKart = getRandomItem(karts);
         const randomTire = getRandomItem(tires);
         const randomGlider = getRandomItem(gliders);
-        
+
         const elements = [
             { id: 'character-image', src: randomCharacter },
             { id: 'kart-image', src: randomKart },
