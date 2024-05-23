@@ -26,16 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderOptions() {
-        const characterOptions = characters.map(item => createOptionHTML(item, 'キャラクター')).join('');
+        const characterOptions = characters.map(item => createOptionHTML(item, 'characters')).join('');
         document.getElementById('character-options').innerHTML += characterOptions;
 
-        const kartOptions = karts.map(item => createOptionHTML(item, 'カート')).join('');
+        const kartOptions = karts.map(item => createOptionHTML(item, 'karts')).join('');
         document.getElementById('kart-options').innerHTML += kartOptions;
 
-        const tireOptions = tires.map(item => createOptionHTML(item, 'タイヤ')).join('');
+        const tireOptions = tires.map(item => createOptionHTML(item, 'tires')).join('');
         document.getElementById('tire-options').innerHTML += tireOptions;
 
-        const gliderOptions = gliders.map(item => createOptionHTML(item, 'グライダー')).join('');
+        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
         // オプションボタンにイベントリスナーを追加する
