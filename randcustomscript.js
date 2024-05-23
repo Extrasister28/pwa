@@ -83,15 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateSelections() {
-        const groups = { characters, karts, tires, gliders };
-        for (const groupName in groups) {
-            if (groups[groupName].every(item => !item.selected)) {
-                alert(`エラー: ${groupName}が選択されていません。少なくとも1つの項目を選択してください。`);
-                return false;
-            }
+    const groups = { characters: 'キャラクター', karts: 'カート', tires: 'タイヤ', gliders: 'グライダー' };
+    for (const groupName in groups) {
+        if (groups[groupName].every(item => !item.selected)) {
+            alert(`エラー: ${groups[groupName]}が選択されていません。少なくとも1つの項目を選択してください。`);
+            return false;
         }
-        return true;
     }
+    return true;
+}
+
 
     function startRoulette() {
         if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
