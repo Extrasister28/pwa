@@ -26,16 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderOptions() {
-        const characterOptions = characters.map(item => createOptionHTML(item, 'characters')).join('');
+        const characterOptions = characters.map(item => createOptionHTML(item, 'キャラクター')).join('');
         document.getElementById('character-options').innerHTML += characterOptions;
 
-        const kartOptions = karts.map(item => createOptionHTML(item, 'karts')).join('');
+        const kartOptions = karts.map(item => createOptionHTML(item, 'カート')).join('');
         document.getElementById('kart-options').innerHTML += kartOptions;
 
-        const tireOptions = tires.map(item => createOptionHTML(item, 'tires')).join('');
+        const tireOptions = tires.map(item => createOptionHTML(item, 'タイヤ')).join('');
         document.getElementById('tire-options').innerHTML += tireOptions;
 
-        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
+        const gliderOptions = gliders.map(item => createOptionHTML(item, 'グライダー')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
         // オプションボタンにイベントリスナーを追加する
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const groups = { characters, karts, tires, gliders };
         for (const groupName in groups) {
             if (groups[groupName].every(item => !item.selected)) {
-                alert(`${groupName}のいずれも選択されていません`);
+                alert(`エラー: ${groupName}が選択されていません。少なくとも1つの項目を選択してください。`);
                 return false;
             }
         }
