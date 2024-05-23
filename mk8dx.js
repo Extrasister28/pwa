@@ -103,3 +103,16 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("全てのボタンをOFFにしました。");
   });
 });
+
+// メンテナンス中かどうかのフラグ
+let isMaintenance = true;
+
+// ページロード時にメンテナンス中のメッセージを表示するかどうかをチェック
+window.addEventListener('load', function() {
+  if (isMaintenance) {
+    document.getElementById('maintenance-message').style.display = 'block';
+    // メンテナンス中の場合、他の要素を非表示にする
+    document.querySelector('body').style.overflow = 'hidden';
+    document.querySelector('body').style.pointerEvents = 'none';
+  }
+});
