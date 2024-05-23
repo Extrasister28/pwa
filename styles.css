@@ -12,14 +12,6 @@ body {
     );
 }
 
-#maintenance-message {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 100px; /* 適切な位置に調整してください */
-  display: none; /* 最初は非表示にします */
-}
-
-
 h1 {
     text-align: center;
 }
