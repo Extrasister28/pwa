@@ -1,4 +1,3 @@
-/* My StyleSheet */
 body {
     width: 100%;
     margin: 0;
@@ -8,8 +7,8 @@ body {
         url("./image/mk8dxbackground.avif"),
         url("./image/mk8dxbackground.jpg"));
     background-image: image-set(
-    "./image/mk8dxbackground.avif" type("image/avif"),
-    "./image/mk8dxbackground.jpg" type("image/jpeg")
+        url("./image/mk8dxbackground.avif") type("image/avif"),
+        url("./image/mk8dxbackground.jpg") type("image/jpeg")
     );
 }
 
@@ -51,25 +50,23 @@ h1 {
     height: auto;
 }
 
-/* リンクを中央寄せにするためのスタイル */
 .link-container {
     text-align: center;
-    margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
+    margin-top: 20px;
 }
 
-/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #000;
     border-radius: 5px;
-    margin: 0 10px; /* リンク間のスペースを追加 */
+    margin: 0 10px;
     text-decoration: none;
     color: #000;
 }
 
 .link-container a:hover {
-    background-color: #f0f0f0; /* ホバー時の背景色 */
+    background-color: #f0f0f0;
 }
 
 .image-box {
@@ -84,12 +81,11 @@ h1 {
     overflow: hidden;
 }
 
-/* 抽選開始ボタンとテキストを中央に配置 */
 #randbtn {
     display: block;
     margin: 20px auto;
-    padding: 20px; /* ボタンの大きさを2倍にする */
-    font-size: 20px; /* ボタンのテキストを大きくする */
+    padding: 20px;
+    font-size: 20px;
 }
 
 #botantext {
