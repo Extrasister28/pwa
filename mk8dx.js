@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("１つ以上の条件を指定してください。");
       return;
     }
+
+    // ボタンを無効化
+    toggleButtons(false);
+
     const audioElement = document.getElementById('audiosaisei');
     audioElement.currentTime = 0;
     audioElement.play();
@@ -16,8 +20,19 @@ document.addEventListener("DOMContentLoaded", function() {
         const randomIndex = Math.floor(Math.random() * conditionList.length);
         const imageId = conditionList[randomIndex];
         randcourse.innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
+        if (i === 26) {
+          // 最後の画像切り替えが終わった後にボタンを再度有効化
+          toggleButtons(true);
+        }
       }, i * 100);
     }
+  }
+
+  function toggleButtons(enable) {
+    const buttons = document.querySelectorAll(".toggle-button, #allOnBtn, #allOffBtn");
+    buttons.forEach(button => {
+      button.disabled = !enable;
+    });
   }
 
   const randbtn = document.getElementById('randbtn');
