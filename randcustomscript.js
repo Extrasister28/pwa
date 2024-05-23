@@ -75,27 +75,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const displayTime = 100; // 各画像が表示される時間（ミリ秒）
         const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
 
-        const randomCharacter = getRandomItem(characters);
-        const randomKart = getRandomItem(karts);
-        const randomTire = getRandomItem(tires);
-        const randomGlider = getRandomItem(gliders);
-
         const elements = [
-            { id: 'character-image', src: randomCharacter },
-            { id: 'kart-image', src: randomKart },
-            { id: 'tire-image', src: randomTire },
-            { id: 'glider-image', src: randomGlider }
+            { id: 'character-image', items: characters },
+            { id: 'kart-image', items: karts },
+            { id: 'tire-image', items: tires },
+            { id: 'glider-image', items: gliders }
         ];
 
         elements.forEach((element, index) => {
             let intervalId = setInterval(() => {
-                const randomSrc = getRandomItem({ characters, karts, tires, gliders }[element.id.split('-')[0]]);
+                const randomSrc = getRandomItem(element.items);
                 document.getElementById(element.id).innerHTML = randomSrc ? `<img src="${randomSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
             }, displayTime);
 
             setTimeout(() => {
                 clearInterval(intervalId);
-                document.getElementById(element.id).innerHTML = element.src ? `<img src="${element.src}" alt="${element.id.split('-')[0]}">` : 'No selection';
+                const finalSrc = getRandomItem(element.items);
+                document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
             }, stopIntervals[index]);
         });
     }
