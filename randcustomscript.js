@@ -70,17 +70,36 @@ document.addEventListener('DOMContentLoaded', function() {
         return filteredItems[Math.floor(Math.random() * filteredItems.length)].src;
     }
 
-    document.getElementById('random-button').addEventListener('click', function() {
+    function startRoulette() {
+        const displayTime = 100; // 各画像が表示される時間（ミリ秒）
+        const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
+        
         const randomCharacter = getRandomItem(characters);
         const randomKart = getRandomItem(karts);
         const randomTire = getRandomItem(tires);
         const randomGlider = getRandomItem(gliders);
+        
+        const elements = [
+            { id: 'character-image', src: randomCharacter },
+            { id: 'kart-image', src: randomKart },
+            { id: 'tire-image', src: randomTire },
+            { id: 'glider-image', src: randomGlider }
+        ];
 
-        document.getElementById('character-image').innerHTML = randomCharacter ? `<img src="${randomCharacter}" alt="Character">` : 'No selection';
-        document.getElementById('kart-image').innerHTML = randomKart ? `<img src="${randomKart}" alt="Kart">` : 'No selection';
-        document.getElementById('tire-image').innerHTML = randomTire ? `<img src="${randomTire}" alt="Tire">` : 'No selection';
-        document.getElementById('glider-image').innerHTML = randomGlider ? `<img src="${randomGlider}" alt="Glider">` : 'No selection';
-    });
+        elements.forEach((element, index) => {
+            let intervalId = setInterval(() => {
+                const randomSrc = getRandomItem({ characters, karts, tires, gliders }[element.id.split('-')[0]]);
+                document.getElementById(element.id).innerHTML = randomSrc ? `<img src="${randomSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
+            }, displayTime);
+
+            setTimeout(() => {
+                clearInterval(intervalId);
+                document.getElementById(element.id).innerHTML = element.src ? `<img src="${element.src}" alt="${element.id.split('-')[0]}">` : 'No selection';
+            }, stopIntervals[index]);
+        });
+    }
+
+    document.getElementById('random-button').addEventListener('click', startRoulette);
 
     document.getElementById('toggle-all-button').addEventListener('click', function() {
         const allGroups = [characters, karts, tires, gliders];
