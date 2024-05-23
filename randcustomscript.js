@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.disabled = disabled;
         });
         document.getElementById('toggle-all-button').disabled = disabled;
+        document.getElementById('random-button').disabled = disabled; // ランダムボタンも無効化
     }
 
     function startRoulette() {
