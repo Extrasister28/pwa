@@ -71,6 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return filteredItems[Math.floor(Math.random() * filteredItems.length)].src;
     }
 
+    function setButtonsDisabled(disabled) {
+        document.querySelectorAll('.toggle-button').forEach(button => {
+            button.disabled = disabled;
+        });
+        document.querySelectorAll('.toggle-all-button').forEach(button => {
+            button.disabled = disabled;
+        });
+        document.getElementById('toggle-all-button').disabled = disabled;
+    }
+
     function startRoulette() {
         const displayTime = 100; // 各画像が表示される時間（ミリ秒）
         const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
@@ -82,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: 'glider-image', items: gliders }
         ];
 
+        setButtonsDisabled(true); // ボタンを無効化
+
         elements.forEach((element, index) => {
             let intervalId = setInterval(() => {
                 const randomSrc = getRandomItem(element.items);
@@ -92,6 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(intervalId);
                 const finalSrc = getRandomItem(element.items);
                 document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
+                
+                if (index === elements.length - 1) {
+                    setButtonsDisabled(false); // すべてのルーレットが停止したらボタンを有効化
+                }
             }, stopIntervals[index]);
         });
     }
