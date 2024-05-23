@@ -82,7 +82,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('random-button').disabled = disabled; // ランダムボタンも無効化
     }
 
+    function validateSelections() {
+        const groups = { characters, karts, tires, gliders };
+        for (const groupName in groups) {
+            if (groups[groupName].every(item => !item.selected)) {
+                alert(`${groupName}のいずれも選択されていません`);
+                return false;
+            }
+        }
+        return true;
+    }
+
     function startRoulette() {
+        if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
+
         const displayTime = 100; // 各画像が表示される時間（ミリ秒）
         const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
 
