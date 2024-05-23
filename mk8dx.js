@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
   let conditionList = Array.from({ length: 96 }, (_, i) => i + 1);
+  let isAnimating = false; // アニメーション中かどうかを管理するフラグ
 
   function botanClick() {
     if (conditionList.length === 0) {
       alert("１つ以上の条件を指定してください。");
       return;
     }
+    if (isAnimating) return; // 既にアニメーション中の場合は何もしない
+    isAnimating = true; // アニメーションを開始する
 
     // ボタンを無効化
     toggleButtons(false);
@@ -22,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         randcourse.innerHTML = `<img id="randimageArea" src="./image/mariokartcourse/${imageId}.jpg" alt="Course" width="410" height="280" style="display: block; margin: auto;"/>`;
         if (i === 26) {
           // 最後の画像切り替えが終わった後にボタンを再度有効化
+          isAnimating = false; // アニメーションが終了する
           toggleButtons(true);
         }
       }, i * 100);
@@ -29,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function toggleButtons(enable) {
-    const buttons = document.querySelectorAll(".toggle-button, #allOnBtn, #allOffBtn");
+    const buttons = document.querySelectorAll(".toggle-button, #allOnBtn, #allOffBtn, #randbtn");
     buttons.forEach(button => {
       button.disabled = !enable;
     });
