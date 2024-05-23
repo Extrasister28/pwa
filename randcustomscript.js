@@ -83,15 +83,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateSelections() {
-    const groups = { characters: 'キャラクター', karts: 'カート', tires: 'タイヤ', gliders: 'グライダー' };
+    const groups = { characters, karts, tires, gliders };
     for (const groupName in groups) {
-        if (groups[groupName].every(item => !item.selected)) {
-            alert(`エラー: ${groups[groupName]}が選択されていません。少なくとも1つの項目を選択してください。`);
+        const items = groups[groupName];
+        if (items.every(item => !item.selected)) {
+            const japaneseGroupName = {
+                characters: 'キャラクター',
+                karts: 'カート',
+                tires: 'タイヤ',
+                gliders: 'グライダー'
+            }[groupName];
+            alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
             return false;
         }
     }
     return true;
 }
+
 
 
     function startRoulette() {
