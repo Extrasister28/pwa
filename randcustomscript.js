@@ -50,15 +50,26 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // 全体のグループのON/OFFボタンにイベントリスナーを追加する
-        document.querySelectorAll('.toggle-all-button').forEach(button => {
+        // グループの全てONボタンにイベントリスナーを追加する
+        document.querySelectorAll('.toggle-all-on-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
                 const items = { characters, karts, tires, gliders }[group];
-                const allSelected = items.every(item => item.selected);
-                items.forEach(item => item.selected = !allSelected);
+                items.forEach(item => item.selected = true);
                 document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
-                    button.textContent = !allSelected ? 'ON' : 'OFF';
+                    button.textContent = 'ON';
+                });
+            });
+        });
+
+        // グループの全てOFFボタンにイベントリスナーを追加する
+        document.querySelectorAll('.toggle-all-off-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const group = this.getAttribute('data-group');
+                const items = { characters, karts, tires, gliders }[group];
+                items.forEach(item => item.selected = false);
+                document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
+                    button.textContent = 'OFF';
                 });
             });
         });
@@ -75,32 +86,29 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.toggle-button').forEach(button => {
             button.disabled = disabled;
         });
-        document.querySelectorAll('.toggle-all-button').forEach(button => {
+        document.querySelectorAll('.toggle-all-on-button, .toggle-all-off-button').forEach(button => {
             button.disabled = disabled;
         });
-        document.getElementById('toggle-all-button').disabled = disabled;
         document.getElementById('random-button').disabled = disabled; // ランダムボタンも無効化
     }
 
     function validateSelections() {
-    const groups = { characters, karts, tires, gliders };
-    for (const groupName in groups) {
-        const items = groups[groupName];
-        if (items.every(item => !item.selected)) {
-            const japaneseGroupName = {
-                characters: 'キャラクター',
-                karts: 'カート',
-                tires: 'タイヤ',
-                gliders: 'グライダー'
-            }[groupName];
-            alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
-            return false;
+        const groups = { characters, karts, tires, gliders };
+        for (const groupName in groups) {
+            const items = groups[groupName];
+            if (items.every(item => !item.selected)) {
+                const japaneseGroupName = {
+                    characters: 'キャラクター',
+                    karts: 'カート',
+                    tires: 'タイヤ',
+                    gliders: 'グライダー'
+                }[groupName];
+                alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
+                return false;
+            }
         }
+        return true;
     }
-    return true;
-}
-
-
 
     function startRoulette() {
         if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
@@ -137,12 +145,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('random-button').addEventListener('click', startRoulette);
 
-    document.getElementById('toggle-all-button').addEventListener('click', function() {
+    document.getElementById('toggle-all-on-button').addEventListener('click', function() {
         const allGroups = [characters, karts, tires, gliders];
-        const allSelected = allGroups.every(group => group.every(item => item.selected));
-        allGroups.forEach(group => group.forEach(item => item.selected = !allSelected));
+        allGroups.forEach(group => group.forEach(item => item.selected = true));
         document.querySelectorAll('.toggle-button').forEach(button => {
-            button.textContent = !allSelected ? 'ON' : 'OFF';
+            button.textContent = 'ON';
+        });
+    });
+
+    document.getElementById('toggle-all-off-button').addEventListener('click', function() {
+        const allGroups = [characters, karts, tires, gliders];
+        allGroups.forEach(group => group.forEach(item => item.selected = false));
+        document.querySelectorAll('.toggle-button').forEach(button => {
+            button.textContent = 'OFF';
         });
     });
 
