@@ -1,17 +1,9 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("./service_worker.js", { scope: "./" }).then(
-      function (registration) {
-        // 登録成功
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      },
-      function (err) {
-        // 登録失敗
-        console.log("ServiceWorker registration failed: ", err);
-      }
-    );
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service_worker.js').then(() => {
+      console.log('登録成功');
+    },() => {
+      console.log('登録失敗');
+    });
   });
 }
