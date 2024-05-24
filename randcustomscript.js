@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
 
         const displayTime = 100; // 各画像が表示される時間（ミリ秒）
-        const stopIntervals = [2000, 2500, 3000, 3500]; // 各画像が停止するまでの時間（ミリ秒）
+        const stopIntervals = [11000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
 
         const elements = [
             { id: 'character-image', items: characters },
