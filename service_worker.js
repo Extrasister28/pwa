@@ -2,7 +2,9 @@
 var CACHE_NAME = 'extra';
 var urlsToCache = [
     'styles.css',
-    'randcustom.css'
+    'randcustom.css',
+    'mk8dxrandcoursescript.js',
+    'mk8dxrandcustomscript.js'
 ];
 
 // インストール処理
