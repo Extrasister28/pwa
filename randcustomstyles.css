@@ -7,9 +7,10 @@ body {
         url("./image/mk8dxbackground.avif"),
         url("./image/mk8dxbackground.jpg"));
     background-image: image-set(
-        url("./image/mk8dxbackground.avif") type("image/avif"),
-        url("./image/mk8dxbackground.jpg") type("image/jpeg")
+    "./image/mk8dxbackground.avif" type("image/avif"),
+    "./image/mk8dxbackground.jpg" type("image/jpeg")
     );
+    text-align: center;
     font-family: Arial, sans-serif;
 }
 
@@ -17,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-top: 40px;
+    margin-top: 40px; /* ここで画像コンテナの位置を下げる */
 }
 
 .image-box {
@@ -44,80 +45,41 @@ body {
     margin: 10px 0;
 }
 
-.option-header button {
-    margin: 0 0px; /* ボタン間のスペースを調整 */
-}
-
 .button-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; /* 追加 */
+    flex-direction: column;
 }
 
-#random-button {
+#random-button, #toggle-all-button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-#random-button:hover {
-    background-color: #0056b3;
-}
-
-.toggle-buttons {
-    display: flex;
-    gap: 10px; /* ボタン間のスペースを調整 */
-    margin-top: 10px;
-}
-
-#toggle-all-on-button, #toggle-all-off-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#toggle-all-on-button:hover, #toggle-all-off-button:hover {
-    background-color: #0056b3;
-}
-
-.toggle-all-on-button, .toggle-all-off-button {
-    font-size: 14px;
-    padding: 5px 15px;
-    margin: 5px 0;
-}
-
+/* リンクを中央寄せにするためのスタイル */
 .link-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
 }
 
+/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #000;
     border-radius: 5px;
-    margin: 0 10px;
+    margin: 0 10px; /* リンク間のスペースを追加 */
     text-decoration: none;
     color: #000;
 }
 
 .link-container a:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* ホバー時の背景色 */
 }
 
+/* オプション画像とボタンのスタイル */
 #options-container {
     margin-top: 40px;
 }
@@ -128,7 +90,7 @@ body {
 
 .option-group h2 {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 10px; /* タイトルとボタンの間のスペース */
 }
 
 .option-item {
@@ -148,14 +110,4 @@ body {
     display: block;
     margin: 0 auto;
     padding: 5px 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
 }
