@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 画像パスを生成する関数
     function generateImageArray(basePath, count) {
         const arr = [];
         for (let i = 1; i <= count; i++) {
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return arr;
     }
 
+    // 配列を生成
     const characters = generateImageArray('./image/mariokartchara/character', 52);
     const karts = generateImageArray('./image/mariokartmachine/kart', 41);
     const tires = generateImageArray('./image/mariokarttire/tire', 22);
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
+        // オプションボタンにイベントリスナーを追加する
         document.querySelectorAll('.toggle-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
@@ -47,24 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        document.querySelectorAll('.toggle-all-on-button').forEach(button => {
+        // 全体のグループのON/OFFボタンにイベントリスナーを追加する
+        document.querySelectorAll('.toggle-all-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
                 const items = { characters, karts, tires, gliders }[group];
-                items.forEach(item => item.selected = true);
+                const allSelected = items.every(item => item.selected);
+                items.forEach(item => item.selected = !allSelected);
                 document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
-                    button.textContent = 'ON';
-                });
-            });
-        });
-
-        document.querySelectorAll('.toggle-all-off-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const group = this.getAttribute('data-group');
-                const items = { characters, karts, tires, gliders }[group];
-                items.forEach(item => item.selected = false);
-                document.querySelectorAll(`.toggle-button[data-group="${group}"]`).forEach(button => {
-                    button.textContent = 'OFF';
+                    button.textContent = !allSelected ? 'ON' : 'OFF';
                 });
             });
         });
@@ -81,35 +75,38 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.toggle-button').forEach(button => {
             button.disabled = disabled;
         });
-        document.querySelectorAll('.toggle-all-on-button, .toggle-all-off-button').forEach(button => {
+        document.querySelectorAll('.toggle-all-button').forEach(button => {
             button.disabled = disabled;
         });
-        document.getElementById('random-button').disabled = disabled;
+        document.getElementById('toggle-all-button').disabled = disabled;
+        document.getElementById('random-button').disabled = disabled; // ランダムボタンも無効化
     }
 
     function validateSelections() {
-        const groups = { characters, karts, tires, gliders };
-        for (const groupName in groups) {
-            const items = groups[groupName];
-            if (items.every(item => !item.selected)) {
-                const japaneseGroupName = {
-                    characters: 'キャラクター',
-                    karts: 'カート',
-                    tires: 'タイヤ',
-                    gliders: 'グライダー'
-                }[groupName];
-                alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
-                return false;
-            }
+    const groups = { characters, karts, tires, gliders };
+    for (const groupName in groups) {
+        const items = groups[groupName];
+        if (items.every(item => !item.selected)) {
+            const japaneseGroupName = {
+                characters: 'キャラクター',
+                karts: 'カート',
+                tires: 'タイヤ',
+                gliders: 'グライダー'
+            }[groupName];
+            alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
+            return false;
         }
-        return true;
     }
+    return true;
+}
+
+
 
     function startRoulette() {
-        if (!validateSelections()) return;
+        if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
 
-        const displayTime = 100;
-        const stopIntervals = [2000, 2500, 3000, 3500];
+        const displayTime = 100; // 各画像が表示される時間（ミリ秒）
+        const stopIntervals = [2000, 2500, 3000, 3500]; // 各画像が停止するまでの時間（ミリ秒）
 
         const elements = [
             { id: 'character-image', items: characters },
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: 'glider-image', items: gliders }
         ];
 
-        setButtonsDisabled(true);
+        setButtonsDisabled(true); // ボタンを無効化
 
         elements.forEach((element, index) => {
             let intervalId = setInterval(() => {
@@ -130,9 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(intervalId);
                 const finalSrc = getRandomItem(element.items);
                 document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
-
+                
                 if (index === elements.length - 1) {
-                    setButtonsDisabled(false);
+                    setButtonsDisabled(false); // すべてのルーレットが停止したらボタンを有効化
                 }
             }, stopIntervals[index]);
         });
@@ -140,19 +137,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('random-button').addEventListener('click', startRoulette);
 
-    document.getElementById('toggle-all-on-button').addEventListener('click', function() {
+    document.getElementById('toggle-all-button').addEventListener('click', function() {
         const allGroups = [characters, karts, tires, gliders];
-        allGroups.forEach(group => group.forEach(item => item.selected = true));
+        const allSelected = allGroups.every(group => group.every(item => item.selected));
+        allGroups.forEach(group => group.forEach(item => item.selected = !allSelected));
         document.querySelectorAll('.toggle-button').forEach(button => {
-            button.textContent = 'ON';
-        });
-    });
-
-    document.getElementById('toggle-all-off-button').addEventListener('click', function() {
-        const allGroups = [characters, karts, tires, gliders];
-        allGroups.forEach(group => group.forEach(item => item.selected = false));
-        document.querySelectorAll('.toggle-button').forEach(button => {
-            button.textContent = 'OFF';
+            button.textContent = !allSelected ? 'ON' : 'OFF';
         });
     });
 
