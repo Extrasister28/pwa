@@ -44,6 +44,10 @@ body {
     margin: 10px 0;
 }
 
+.option-header button {
+    margin: 0 5px; /* ボタン間のスペースを調整 */
+}
+
 .button-container {
     display: flex;
     justify-content: center;
