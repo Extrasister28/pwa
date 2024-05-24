@@ -26,5 +26,10 @@
     </div>
     <div class="container" id="course-container"></div>
     <script type="text/javascript" src="randcoursescript.js"></script>
+    <script>      
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register ('/pwa_test/service-worker.js')
+      }
+    </script>
   </body>
 </html>
