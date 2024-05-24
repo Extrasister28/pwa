@@ -4,7 +4,7 @@ var urlsToCache = [
     'randcoursestyles.css',
     'randcustomstyles.css',
     'mk8dxrandcoursescript.js',
-    'mk8dxrandcustomscript.js'
+    'mk8dxrandcustomscript.js',
 ];
 
 // インストール処理
