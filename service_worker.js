@@ -2,7 +2,7 @@
 var CACHE_NAME = "extra-v1"; 
 //キャッシュするファイル or ディレクトリを指定する
 var urlsToCache = [
-  "/", 
+  "./", 
 ];
 
 // install
