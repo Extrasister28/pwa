@@ -10,6 +10,7 @@ body {
         url("./image/mk8dxbackground.avif") type("image/avif"),
         url("./image/mk8dxbackground.jpg") type("image/jpeg")
     );
+    font-family: Arial, sans-serif;
 }
 
 h1 {
