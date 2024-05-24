@@ -1,8 +1,8 @@
 // キャッシュ名、どこまでキャッシュするか。
 var CACHE_NAME = 'extra';
 var urlsToCache = [
-    'styles.css',
-    'randcustom.css',
+    'randcoursestyles.css',
+    'randcustomstyles.css',
     'mk8dxrandcoursescript.js',
     'mk8dxrandcustomscript.js'
 ];
