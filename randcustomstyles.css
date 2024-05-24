@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-top: 40px; /* ここで画像コンテナの位置を下げる */
+    margin-top: 40px;
 }
 
 .image-box {
@@ -52,34 +52,47 @@ body {
     flex-direction: column;
 }
 
-#random-button, #toggle-all-button {
+#random-button, .toggle-all-on-button, .toggle-all-off-button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* リンクを中央寄せにするためのスタイル */
+#random-button:hover, .toggle-all-on-button:hover, .toggle-all-off-button:hover {
+    background-color: #0056b3;
+}
+
+.toggle-all-on-button, .toggle-all-off-button {
+    font-size: 14px;
+    padding: 5px 15px;
+    margin: 5px 0;
+}
+
 .link-container {
     text-align: center;
-    margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
+    margin-top: 20px;
 }
 
-/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #000;
     border-radius: 5px;
-    margin: 0 10px; /* リンク間のスペースを追加 */
+    margin: 0 10px;
     text-decoration: none;
     color: #000;
 }
 
 .link-container a:hover {
-    background-color: #f0f0f0; /* ホバー時の背景色 */
+    background-color: #f0f0f0;
 }
 
-/* オプション画像とボタンのスタイル */
 #options-container {
     margin-top: 40px;
 }
@@ -90,7 +103,7 @@ body {
 
 .option-group h2 {
     display: inline-block;
-    margin-right: 10px; /* タイトルとボタンの間のスペース */
+    margin-right: 10px;
 }
 
 .option-item {
@@ -110,4 +123,14 @@ body {
     display: block;
     margin: 0 auto;
     padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
 }
