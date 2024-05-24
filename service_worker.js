@@ -1,30 +1,57 @@
-// キャッシュ名、どこまでキャッシュするか。
-var CACHE_NAME = 'extra';
+//キャッシュ名(=バージョン)を指定する
+var CACHE_NAME = "extra-v1"; 
+//キャッシュするファイル or ディレクトリを指定する
 var urlsToCache = [
-    'randcoursestyles.css',
-    'randcustomstyles.css',
-    'mk8dxrandcoursescript.js',
-    'mk8dxrandcustomscript.js',
+  "/", 
 ];
 
-// インストール処理
-self.addEventListener('install', function(event) {
-    event.waitUntil(
-        caches
-            .open(CACHE_NAME)
-            .then(function(cache) {
-                return cache.addAll(urlsToCache);
-            })
-    );
+// install
+self.addEventListener("install", function (event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      console.log("Opened cache");
+      return cache.addAll(urlsToCache);
+    })
+  );
 });
+// activate
+self.addEventListener("activate", function (event) {
+  var cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      return Promise.all(
+        cacheNames.map(function (cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+// fetch
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      if (response) {
+        return response;
+      }
 
-// リソースフェッチ時のキャッシュロード処理
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches
-            .match(event.request)
-            .then(function(response) {
-                return response || fetch(event.request);
-            })
-    );
+      var fetchRequest = event.request.clone();
+
+      return fetch(fetchRequest).then(function (response) {
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
+        }
+
+        var responseToCache = response.clone();
+
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(event.request, responseToCache);
+        });
+
+        return response;
+      });
+    })
+  );
 });
