@@ -56,16 +56,9 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
-    background-color: #007BFF;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#random-button:hover, .toggle-all-on-button:hover, .toggle-all-off-button:hover {
-    background-color: #0056b3;
 }
 
 .toggle-all-on-button, .toggle-all-off-button {
@@ -123,14 +116,7 @@ body {
     display: block;
     margin: 0 auto;
     padding: 5px 10px;
-    background-color: #007BFF;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
 }
