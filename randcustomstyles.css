@@ -45,7 +45,7 @@ body {
 }
 
 .option-header button {
-    margin: 0 5px; /* ボタン間のスペースを調整 */
+    margin: 0 0px; /* ボタン間のスペースを調整 */
 }
 
 .button-container {
