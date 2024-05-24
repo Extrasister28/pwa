@@ -50,12 +50,13 @@ body {
 
 .button-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    margin-top: 20px; /* 追加 */
 }
 
-#random-button, #toggle-all-on-button, #toggle-all-off-button, .toggle-all-on-button, .toggle-all-off-button {
+#random-button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
@@ -67,7 +68,28 @@ body {
     transition: background-color 0.3s;
 }
 
-#random-button:hover, #toggle-all-on-button:hover, #toggle-all-off-button:hover, .toggle-all-on-button:hover, .toggle-all-off-button:hover {
+#random-button:hover {
+    background-color: #0056b3;
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 10px; /* ボタン間のスペースを調整 */
+    margin-top: 10px;
+}
+
+#toggle-all-on-button, #toggle-all-off-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#toggle-all-on-button:hover, #toggle-all-off-button:hover {
     background-color: #0056b3;
 }
 
