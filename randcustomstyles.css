@@ -54,7 +54,7 @@ body {
 #random-button, #toggle-all-on-button, #toggle-all-off-button, .toggle-all-on-button, .toggle-all-off-button {
     padding: 10px 20px;
     font-size: 16px;
-    margin: 5px 0;
+    margin: 10px 0;
     background-color: #007BFF;
     color: white;
     border: none;
