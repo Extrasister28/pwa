@@ -51,7 +51,7 @@ body {
     flex-direction: column;
 }
 
-#random-button, .toggle-all-on-button, .toggle-all-off-button {
+#random-button, #toggle-all-on-button, #toggle-all-off-button, .toggle-all-on-button, .toggle-all-off-button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px 0;
@@ -63,7 +63,7 @@ body {
     transition: background-color 0.3s;
 }
 
-#random-button:hover, .toggle-all-on-button:hover, .toggle-all-off-button:hover {
+#random-button:hover, #toggle-all-on-button:hover, #toggle-all-off-button:hover, .toggle-all-on-button:hover, .toggle-all-off-button:hover {
     background-color: #0056b3;
 }
 
