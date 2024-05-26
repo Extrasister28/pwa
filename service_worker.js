@@ -1,5 +1,5 @@
 // キャッシュファイルの指定
-var CACHE_NAME = 'extra v0.2.1';
+var CACHE_NAME = 'extra-v0.2.1';
 var urlsToCache = [
     './',
 ];
@@ -7,21 +7,33 @@ var urlsToCache = [
 // インストール処理
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches
-            .open(CACHE_NAME)
-            .then(function(cache) {
-                return cache.addAll(urlsToCache);
-            })
+        caches.open(CACHE_NAME).then(function(cache) {
+            return cache.addAll(urlsToCache);
+        })
+    );
+});
+
+// アクティベーション時のキャッシュ更新処理
+self.addEventListener('activate', function(event) {
+    var cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
     );
 });
 
 // リソースフェッチ時のキャッシュロード処理
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches
-            .match(event.request)
-            .then(function(response) {
-                return response ? response : fetch(event.request);
-            })
+        caches.match(event.request).then(function(response) {
+            return response ? response : fetch(event.request);
+        })
     );
 });
