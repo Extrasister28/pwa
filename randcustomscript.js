@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 画像パスを生成する関数
-    function generateImageArray(basePath, count) {
+    function generateImageArray(basePath, count, names) {
         const arr = [];
         for (let i = 1; i <= count; i++) {
-            arr.push({ src: `${basePath}${i}.png`, selected: true });
+            arr.push({ src: `${basePath}${i}.png`, selected: true, name: names[i - 1] });
         }
         return arr;
     }
 
-    // 配列を生成
-    const characters = generateImageArray('./image/mariokartchara/character', 52);
-    const karts = generateImageArray('./image/mariokartmachine/kart', 41);
-    const tires = generateImageArray('./image/mariokarttire/tire', 22);
-    const gliders = generateImageArray('./image/mariokartglider/glider', 15);
+    const characterNames = ['マリオ', 'ルイージ', 'ピーチ', 'ヨッシー', /* 省略 */ 'リンク'];
+    const kartNames = ['スタンダードカート', 'マッハGP', 'ワイルドスター', /* 省略 */ 'トルネード'];
+    const tireNames = ['スタンダードタイヤ', 'スリックタイヤ', 'ワイルドタイヤ', /* 省略 */ 'ローラータイヤ'];
+    const gliderNames = ['スーパーグライダー', 'かみなりカイト', 'パラフォイル', /* 省略 */ 'ワリオのひげ'];
+
+    const characters = generateImageArray('./image/mariokartchara/character', 52, characterNames);
+    const karts = generateImageArray('./image/mariokartmachine/kart', 41, kartNames);
+    const tires = generateImageArray('./image/mariokarttire/tire', 22, tireNames);
+    const gliders = generateImageArray('./image/mariokartglider/glider', 15, gliderNames);
 
     function createOptionHTML(item, group) {
         return `
@@ -38,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
-        // オプションボタンにイベントリスナーを追加する
         document.querySelectorAll('.toggle-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
@@ -50,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // 全体のグループのON/OFFボタンにイベントリスナーを追加する
         document.querySelectorAll('.toggle-all-button').forEach(button => {
             button.addEventListener('click', function() {
                 const group = this.getAttribute('data-group');
@@ -68,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!items) return null;
         const filteredItems = items.filter(item => item.selected);
         if (filteredItems.length === 0) return null;
-        return filteredItems[Math.floor(Math.random() * filteredItems.length)].src;
+        const randomItem = filteredItems[Math.floor(Math.random() * filteredItems.length)];
+        return { src: randomItem.src, name: randomItem.name };
     }
 
     function setButtonsDisabled(disabled) {
@@ -79,57 +81,61 @@ document.addEventListener('DOMContentLoaded', function() {
             button.disabled = disabled;
         });
         document.getElementById('toggle-all-button').disabled = disabled;
-        document.getElementById('random-button').disabled = disabled; // ランダムボタンも無効化
+        document.getElementById('random-button').disabled = disabled;
     }
 
     function validateSelections() {
-    const groups = { characters, karts, tires, gliders };
-    for (const groupName in groups) {
-        const items = groups[groupName];
-        if (items.every(item => !item.selected)) {
-            const japaneseGroupName = {
-                characters: 'キャラクター',
-                karts: 'カート',
-                tires: 'タイヤ',
-                gliders: 'グライダー'
-            }[groupName];
-            alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
-            return false;
+        const groups = { characters, karts, tires, gliders };
+        for (const groupName in groups) {
+            const items = groups[groupName];
+            if (items.every(item => !item.selected)) {
+                const japaneseGroupName = {
+                    characters: 'キャラクター',
+                    karts: 'カート',
+                    tires: 'タイヤ',
+                    gliders: 'グライダー'
+                }[groupName];
+                alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
+                return false;
+            }
         }
+        return true;
     }
-    return true;
-}
-
-
 
     function startRoulette() {
-        if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
+        if (!validateSelections()) return;
 
-        const displayTime = 100; // 各画像が表示される時間（ミリ秒）
-        const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
+        const displayTime = 100;
+        const stopIntervals = [1000, 1500, 2000, 2500];
 
         const elements = [
-            { id: 'character-image', items: characters },
-            { id: 'kart-image', items: karts },
-            { id: 'tire-image', items: tires },
-            { id: 'glider-image', items: gliders }
+            { id: 'character-image', nameId: 'character-name', items: characters },
+            { id: 'kart-image', nameId: 'kart-name', items: karts },
+            { id: 'tire-image', nameId: 'tire-name', items: tires },
+            { id: 'glider-image', nameId: 'glider-name', items: gliders }
         ];
 
-        setButtonsDisabled(true); // ボタンを無効化
+        setButtonsDisabled(true);
 
         elements.forEach((element, index) => {
             let intervalId = setInterval(() => {
-                const randomSrc = getRandomItem(element.items);
-                document.getElementById(element.id).innerHTML = randomSrc ? `<img src="${randomSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
+                const randomItem = getRandomItem(element.items);
+                if (randomItem) {
+                    document.getElementById(element.id).innerHTML = `<img src="${randomItem.src}" alt="${element.id.split('-')[0]}">`;
+                    document.getElementById(element.nameId).textContent = randomItem.name;
+                }
             }, displayTime);
 
             setTimeout(() => {
                 clearInterval(intervalId);
-                const finalSrc = getRandomItem(element.items);
-                document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
-                
+                const finalItem = getRandomItem(element.items);
+                if (finalItem) {
+                    document.getElementById(element.id).innerHTML = `<img src="${finalItem.src}" alt="${element.id.split('-')[0]}">`;
+                    document.getElementById(element.nameId).textContent = finalItem.name;
+                }
+
                 if (index === elements.length - 1) {
-                    setButtonsDisabled(false); // すべてのルーレットが停止したらボタンを有効化
+                    setButtonsDisabled(false);
                 }
             }, stopIntervals[index]);
         });
