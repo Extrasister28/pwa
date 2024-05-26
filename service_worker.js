@@ -1,5 +1,5 @@
 // キャッシュファイルの指定
-var CACHE_NAME = 'extra-v0.1.9';
+var CACHE_NAME = 'extra v0.2.0';
 var urlsToCache = [
     './',
 ];
@@ -13,29 +13,32 @@ self.addEventListener('install', function(event) {
     );
 });
 
-// アクティベーション時のキャッシュ更新処理
+// リソースフェッチ時のキャッシュロード処理
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            return response || fetch(event.request);
+        })
+    );
+});
+
+// Service Worker が更新された時の処理
 self.addEventListener('activate', function(event) {
-    var cacheWhitelist = [CACHE_NAME];
+    var cacheWhitelist = [CACHE_NAME]; // 有効なキャッシュ名のリスト
+    
     event.waitUntil(
         caches.keys().then(function(cacheNames) {
             return Promise.all(
                 cacheNames.map(function(cacheName) {
+                    // キャッシュ名がホワイトリストにない場合、削除する
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
                         return caches.delete(cacheName);
                     }
                 })
             );
-        }).then(function() {
-            console.log('Service Worker の更新が完了しました。');
         })
     );
-});
-
-// リソースフェッチ時のキャッシュロード処理
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-            return response ? response : fetch(event.request);
-        })
-    );
+    
+    // 更新時にメッセージを出す
+    console.log('Service Workerが更新されました');
 });
