@@ -1,5 +1,5 @@
 // キャッシュファイルの指定
-var CACHE_NAME = 'extra-v0.1.7';
+var CACHE_NAME = 'extra-v0.1.8';
 var urlsToCache = [
     './',
 ];
@@ -25,6 +25,8 @@ self.addEventListener('activate', function(event) {
                     }
                 })
             );
+        }).then(function() {
+            console.log('Service Worker の更新が完了しました。');
         })
     );
 });
