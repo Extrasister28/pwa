@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-top: 40px; /* ここで画像コンテナの位置を下げる */
+    margin-top: 40px;
 }
 
 .image-box {
@@ -26,6 +26,7 @@ body {
     width: 150px;
     height: 150px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 10px;
@@ -36,6 +37,11 @@ body {
 .image-box img {
     max-width: 100%;
     max-height: 100%;
+}
+
+.name {
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 .option-header {
@@ -58,28 +64,25 @@ body {
     margin: 10px 0;
 }
 
-/* リンクを中央寄せにするためのスタイル */
 .link-container {
     text-align: center;
-    margin-top: 20px; /* リンクとボタンの間のスペースを追加 */
+    margin-top: 20px;
 }
 
-/* 枠で囲むためのスタイル */
 .link-container a {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #000;
     border-radius: 5px;
-    margin: 0 10px; /* リンク間のスペースを追加 */
+    margin: 0 10px;
     text-decoration: none;
     color: #000;
 }
 
 .link-container a:hover {
-    background-color: #f0f0f0; /* ホバー時の背景色 */
+    background-color: #f0f0f0;
 }
 
-/* オプション画像とボタンのスタイル */
 #options-container {
     margin-top: 40px;
 }
@@ -90,7 +93,7 @@ body {
 
 .option-group h2 {
     display: inline-block;
-    margin-right: 10px; /* タイトルとボタンの間のスペース */
+    margin-right: 10px;
 }
 
 .option-item {
