@@ -14,10 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const tires = generateImageArray('./image/mariokarttire/tire', 22);
     const gliders = generateImageArray('./image/mariokartglider/glider', 15);
 
-    function createOptionHTML(item, group) {
+    // キャラクター名の配列
+    const characterNames = ["マリオ", "ルイージ", "ピーチ", "デイジー", "ロゼッタ", "タヌキマリオ", "ネコピーチ", "キャサリン", "ヨッシー", "キノピオ", "ノコノコ", "ヘイホー", "ジュゲム", "キノピコ", "キングテレサ", "ボスパックン", "ベビィマリオ", "ベビィルイージ", "ベビィピーチ", "ベビィデイジー", "ベビィロゼッタ", "メタルマリオ", "ピンクゴールドピーチ", "ハナチャン", "ワリオ", "ワルイージ", "ドンキーコング", "クッパ", "カロン", "クッパJr.", "ほねクッパ", "カメック", "レミー", "ラリー", "ウェンディ", "ルドウィッグ", "イギー", "ロイ", "モートン", "キノピーチ", "インクリング", "むらびと", "しずえ", "リンク", "ディディーコング", "ファンキーコング", "ポリーン", "軽量Mii", "中量Mii", "重量Mii"];
+
+    // カート名の配列
+    const kartNames = ["カート1", "カート2", /* 他のカート名 */];
+
+    // タイヤ名の配列
+    const tireNames = ["タイヤ1", "タイヤ2", /* 他のタイヤ名 */];
+
+    // グライダー名の配列
+    const gliderNames = ["グライダー1", "グライダー2", /* 他のグライダー名 */];
+
+    function createOptionHTML(item, group, names) {
+        const name = names[item.src - 1] || 'No name'; //インデックスを調整
         return `
             <div class="option-item">
                 <img src="${item.src}" alt="${group}">
+                <p class="name">${name}</p>
                 <button class="toggle-button" data-group="${group}" data-src="${item.src}">
                     ${item.selected ? 'ON' : 'OFF'}
                 </button>
