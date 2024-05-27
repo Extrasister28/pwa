@@ -1,5 +1,5 @@
 // キャッシュファイルの指定
-var CACHE_NAME = 'extra-v0.0.3';
+var CACHE_NAME = 'extra-v0.0.4';
 var urlsToCache = [
     './',
 ];
