@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function createOptionHTML(item, group, names) {
-        const name = names[item.src - 1] || 'No name'; //インデックスを調整
+        const name = names[item.src.split('/').pop().split('.')[0].replace(/[^\d]/g, '') - 1] || 'No name'; // インデックスを調整
         return `
             <div class="option-item">
                 <img src="${item.src}" alt="${group}">
@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderOptions() {
-        const characterOptions = characters.map(item => createOptionHTML(item, 'characters', 'characterNames')).join('');
+        const characterOptions = characters.map(item => createOptionHTML(item, 'characters', characterNames)).join('');
         document.getElementById('character-options').innerHTML += characterOptions;
 
-        const kartOptions = karts.map(item => createOptionHTML(item, 'karts', 'kartNames')).join('');
+        const kartOptions = karts.map(item => createOptionHTML(item, 'karts', kartNames)).join('');
         document.getElementById('kart-options').innerHTML += kartOptions;
 
-        const tireOptions = tires.map(item => createOptionHTML(item, 'tires', 'tireNames')).join('');
+        const tireOptions = tires.map(item => createOptionHTML(item, 'tires', tireNames)).join('');
         document.getElementById('tire-options').innerHTML += tireOptions;
 
-        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders', 'gliderNames')).join('');
+        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders', gliderNames)).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
         // オプションボタンにイベントリスナーを追加する
@@ -98,24 +98,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateSelections() {
-    const groups = { characters, karts, tires, gliders };
-    for (const groupName in groups) {
-        const items = groups[groupName];
-        if (items.every(item => !item.selected)) {
-            const japaneseGroupName = {
-                characters: 'キャラクター',
-                karts: 'カート',
-                tires: 'タイヤ',
-                gliders: 'グライダー'
-            }[groupName];
-            alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
-            return false;
+        const groups = { characters, karts, tires, gliders };
+        for (const groupName in groups) {
+            const items = groups[groupName];
+            if (items.every(item => !item.selected)) {
+                const japaneseGroupName = {
+                    characters: 'キャラクター',
+                    karts: 'カート',
+                    tires: 'タイヤ',
+                    gliders: 'グライダー'
+                }[groupName];
+                alert(`エラー: ${japaneseGroupName}が選択されていません。少なくとも1つの項目を選択してください。`);
+                return false;
+            }
         }
+        return true;
     }
-    return true;
-}
-
-
 
     function startRoulette() {
         if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
