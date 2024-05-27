@@ -115,38 +115,41 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    function startRoulette() {
-        if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
+    // ランダムボタンを押した際に実行される関数
+function startRoulette() {
+    if (!validateSelections()) return; // すべてのグループに少なくとも1つの選択があることを確認
 
-        const displayTime = 100; // 各画像が表示される時間（ミリ秒）
-        const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
+    const displayTime = 100; // 各画像が表示される時間（ミリ秒）
+    const stopIntervals = [1000, 1500, 2000, 2500]; // 各画像が停止するまでの時間（ミリ秒）
 
-        const elements = [
-            { id: 'character-image', items: characters },
-            { id: 'kart-image', items: karts },
-            { id: 'tire-image', items: tires },
-            { id: 'glider-image', items: gliders }
-        ];
+    const elements = [
+        { id: 'character-image', items: characters, names: characterNames },
+        { id: 'kart-image', items: karts, names: kartNames },
+        { id: 'tire-image', items: tires, names: tireNames },
+        { id: 'glider-image', items: gliders, names: gliderNames }
+    ];
 
-        setButtonsDisabled(true); // ボタンを無効化
+    setButtonsDisabled(true); // ボタンを無効化
 
-        elements.forEach((element, index) => {
-            let intervalId = setInterval(() => {
-                const randomSrc = getRandomItem(element.items);
-                document.getElementById(element.id).innerHTML = randomSrc ? `<img src="${randomSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
-            }, displayTime);
+    elements.forEach((element, index) => {
+        let intervalId = setInterval(() => {
+            const randomSrc = getRandomItem(element.items);
+            const randomName = element.names[element.items.findIndex(item => item.src === randomSrc)];
+            document.getElementById(element.id).innerHTML = randomSrc ? `<img src="${randomSrc}" alt="${element.id.split('-')[0]}"><br>${randomName}` : 'No selection';
+        }, displayTime);
 
-            setTimeout(() => {
-                clearInterval(intervalId);
-                const finalSrc = getRandomItem(element.items);
-                document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}">` : 'No selection';
-                
-                if (index === elements.length - 1) {
-                    setButtonsDisabled(false); // すべてのルーレットが停止したらボタンを有効化
-                }
-            }, stopIntervals[index]);
-        });
-    }
+        setTimeout(() => {
+            clearInterval(intervalId);
+            const finalSrc = getRandomItem(element.items);
+            const finalName = element.names[element.items.findIndex(item => item.src === finalSrc)];
+            document.getElementById(element.id).innerHTML = finalSrc ? `<img src="${finalSrc}" alt="${element.id.split('-')[0]}"><br>${finalName}` : 'No selection';
+            
+            if (index === elements.length - 1) {
+                setButtonsDisabled(false); // すべてのルーレットが停止したらボタンを有効化
+            }
+        }, stopIntervals[index]);
+    });
+}
 
     document.getElementById('random-button').addEventListener('click', startRoulette);
 
