@@ -1,4 +1,8 @@
-キャッシュバージョン：extra-v0.0.1
+現在のキャッシュバージョン：extra-v0.0.2
 更新内容
+
+extra-v0.0.2:
+dev.html、dev.txtの追加
+
 extra-v0.0.1：
 Service_Workerにて古いキャッシュの削除に対応（していると思いたい）
