@@ -104,6 +104,8 @@ body {
     display: inline-block;
     margin: 0 10px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .option-item img {
