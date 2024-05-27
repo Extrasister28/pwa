@@ -1,5 +1,8 @@
-現在のキャッシュバージョン：extra-v0.0.5
+現在のキャッシュバージョン：extra-v0.0.6
 更新内容
+
+extra-v0.0.6:
+changeLog.htmlの追加
 
 extra-v0.0.5:
 Service_Workerの内容の更新
