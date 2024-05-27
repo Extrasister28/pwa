@@ -32,6 +32,7 @@ body {
     margin: 0 10px;
     font-size: 14px;
     overflow: hidden;
+    position: relative; /* 追加 */
 }
 
 .image-box img {
@@ -39,9 +40,12 @@ body {
     max-height: 100%;
 }
 
-.name {
-    margin-top: 10px;
+.image-name {
     font-size: 16px;
+    text-align: center;
+    margin-top: -10px; /* 追加 */
+    padding-bottom: 20px; /* 調整 */
+    width: 150px; /* 親の幅と一致 */
 }
 
 .option-header {
