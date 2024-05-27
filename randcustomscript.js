@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function createOptionHTML(item, group, names) {
-        const name = names[item.src] || 'No name'; //インデックスを調整
+        const name = names[item.src - 1] || 'No name'; //インデックスを調整
         return `
             <div class="option-item">
                 <img src="${item.src}" alt="${group}">
@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderOptions() {
-        const characterOptions = characters.map(item => createOptionHTML(item, 'characters')).join('');
+        const characterOptions = characters.map(item => createOptionHTML(item, 'characters', 'characterNames')).join('');
         document.getElementById('character-options').innerHTML += characterOptions;
 
-        const kartOptions = karts.map(item => createOptionHTML(item, 'karts')).join('');
+        const kartOptions = karts.map(item => createOptionHTML(item, 'karts', 'kartNames')).join('');
         document.getElementById('kart-options').innerHTML += kartOptions;
 
-        const tireOptions = tires.map(item => createOptionHTML(item, 'tires')).join('');
+        const tireOptions = tires.map(item => createOptionHTML(item, 'tires', 'tireNames')).join('');
         document.getElementById('tire-options').innerHTML += tireOptions;
 
-        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders')).join('');
+        const gliderOptions = gliders.map(item => createOptionHTML(item, 'gliders', 'gliderNames')).join('');
         document.getElementById('glider-options').innerHTML += gliderOptions;
 
         // オプションボタンにイベントリスナーを追加する
