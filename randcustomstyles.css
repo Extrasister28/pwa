@@ -103,9 +103,6 @@ body {
 .option-item {
     display: inline-block;
     margin: 0 10px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .option-item img {
@@ -113,6 +110,7 @@ body {
     max-width: 100px;
     max-height: 100px;
     margin-bottom: 5px;
+    margin: 0 auto;
 }
 
 .toggle-button {
