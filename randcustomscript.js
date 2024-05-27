@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function createOptionHTML(item, group, names) {
-        const name = names[item.src - 1] || 'No name'; //インデックスを調整
+        const name = names[item.src] || 'No name'; //インデックスを調整
         return `
             <div class="option-item">
                 <img src="${item.src}" alt="${group}">
