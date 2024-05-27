@@ -32,7 +32,7 @@ body {
     margin: 0 10px;
     font-size: 14px;
     overflow: hidden;
-    position: relative; /* 追加 */
+    position: relative;
 }
 
 .image-box img {
