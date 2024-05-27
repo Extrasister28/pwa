@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev</title>
+</head>
+<body>
+    <div id="text-content"></div>
+
+    <script>
+        // テキストファイルのパス
+        var filePath = './changelog.txt';
+
+        // ファイルを読み込み、内容を表示する関数
+        function loadTextFile(filePath) {
+            // XMLHttpRequestオブジェクトを作成
+            var xhr = new XMLHttpRequest();
+
+            // ファイルが読み込まれたときの処理
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // テキストファイルの内容を取得して表示
+                    document.getElementById('text-content').innerText = xhr.responseText;
+                }
+            };
+
+            // ファイルを非同期で読み込み
+            xhr.open('GET', filePath, true);
+            xhr.send();
+        }
+
+        // ページが読み込まれたときに実行
+        window.onload = function() {
+            // テキストファイルを読み込み
+            loadTextFile(filePath);
+        };
+    </script>
+</body>
+</html>
